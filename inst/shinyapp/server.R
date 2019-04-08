@@ -4,7 +4,7 @@ d=d[!d%in%c('UScitiesD','eurodist','sleep','warpbreaks')]
 d=d[unlist(lapply(d,function(d.in) eval(parse(text=paste0('ncol(as.data.frame(datasets::',d.in,'))')))))>1]
 d=d[-which(d=='mtcars')]
 d=c('mtcars',d)
-
+shiny.maxRequestSize=100*1024^2
 server <- shinyServer(function(input, output,session) {
   TEMPLIST<-new.env()
   TEMPLIST$d<-d
